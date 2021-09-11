@@ -1,0 +1,8 @@
+
+CREATE TABLE tb_user(
+  id INT GENERATED ALWAYS AS IDENTITY,
+  email VARCHAR(45) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+
+  PRIMARY KEY (id)
+);
