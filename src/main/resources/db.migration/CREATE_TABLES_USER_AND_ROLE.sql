@@ -2,7 +2,11 @@
 CREATE TABLE tb_user(
   id INT GENERATED ALWAYS AS IDENTITY,
   email VARCHAR(45) NOT NULL,
+  name VARCHAR(250) NOT NULL,
   password VARCHAR(100) NOT NULL,
 
   PRIMARY KEY (id)
 );
+
+CREATE UNIQUE INDEX CONCURRENTLY tb_user_email_unique
+ON tb_user (email);

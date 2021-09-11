@@ -1,6 +1,7 @@
 package com.framework.blogapi.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +25,9 @@ public class User implements UserDetails {
 	private Integer id;
 	
 	private String email;
-	
+
+	private String name;
+
 	private String password;
 	
 //	@ManyToMany(fetch = FetchType.EAGER)
