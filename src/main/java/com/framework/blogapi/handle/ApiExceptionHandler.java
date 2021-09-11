@@ -112,6 +112,14 @@ public class ApiExceptionHandler {
         return new ErrorResponse<String>(errors);
     }
 
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(UserExistsException.class)
+    public ErrorResponse<String> handleValidationExceptions(UserExistsException ex) {
+        List<String> errors = new ArrayList();
+        errors.add("E-mail já existe na base");
+        return new ErrorResponse<String>(errors);
+    }
+
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler(BadCredentialsException.class)
     public ErrorResponse<String> handleValidationExceptions(BadCredentialsException ex) {
