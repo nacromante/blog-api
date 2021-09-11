@@ -26,16 +26,8 @@ public class TokenService {
 		Date now = new Date();
 		Date exp = new Date(now.getTime() + Long.parseLong(expiration));
 
-		return Jwts.builder().setIssuer("MinhaAplicacao")
-                             .setSubject(user.getId().toString())
-                             .setIssuedAt(new Date())
-				             .setExpiration(exp)
-                             .signWith(SignatureAlgorithm.HS256, secret).compact();
-	}
-
-	public Integer getTokenId(String token) {
-		Claims body = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-		return Integer.valueOf(body.getSubject());
+		return Jwts.builder().setIssuer("IRS").setSubject(user.getId().toString()).setIssuedAt(new Date())
+				.setExpiration(exp).signWith(SignatureAlgorithm.HS256, secret).compact();
 	}
 
 	public boolean isTokenValid(String token) {
@@ -45,6 +37,11 @@ public class TokenService {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	public Integer getTokenId(String token) {
+		Claims body = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+		return Integer.valueOf(body.getSubject());
 	}
 
 }
